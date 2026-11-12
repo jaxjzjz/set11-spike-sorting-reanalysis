@@ -1,0 +1,12 @@
+parameter,value,unit,basis_type,reason_or_source
+sample_rate,30000.0,Hz,Recorded metadata,Matching recording header and chanMap.mat
+filter_low,300,Hz,Starting value from the official example; not optimized,SpikeInterface 0.105 preprocessing
+filter_high,6000,Hz,Starting value from the official example; not optimized,SpikeInterface 0.105 preprocessing
+filter_order,3,,Implementation setting,"Butterworth, forward-backward SOS filtering"
+reference,median after bandpass,,Method from the official example,Median across retained channels at each sample
+windows,6,,Sampling design,One window from each of six time strata
+window_duration,5,s,Sampling design,Equal window duration and weight
+random_seed,11,,Reproducibility setting,Sample windows independently of their output
+padding,0.1,s,Filter boundary setting,"Read padding, filter, then crop"
+welch_segment,1,s,Spectrum estimation setting,Hann window; frequency spacing about 1 Hz
+welch_overlap,0.5,fraction,Setting supported by the documentation,SciPy Welch documentation: 50% overlap for a Hann window

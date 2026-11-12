@@ -1,0 +1,6 @@
+02_raw_data/
+01_original_submissions/
+.venv/
+.ipynb_checkpoints/
+__pycache__/
+.DS_Store

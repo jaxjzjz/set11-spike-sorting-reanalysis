@@ -1,0 +1,2 @@
+connected_channels,sample_rate_hz,duration_seconds,tail_reason,gaps_in_valid_recording,overlaps_in_valid_recording
+63,30000.0,336.5888,all channels zero after timestamp gap,0,0
