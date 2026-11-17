@@ -57,3 +57,8 @@
 | 7 | [neighbor_pairs.csv](07_quality/neighbor_pairs.csv) | 同主接点最近特征中心配对和模板相关性 | 找到可以直接对照的组号 |
 | 7 | [group_overview.png](07_quality/group_overview.png) | 全部候选组的一致性和分离总览 | 查看总体分组质量 |
 | 7 | [overlap_example.png](07_quality/overlap_example.png) | CH10-C9与C23的六接点波形、特征、ISI和互相关图 | 展示已定位的分离问题 |
+
+| 7 | [merge_trials.csv](07_quality/merge_trials.csv) | 827对候选组独立试合并前后的分离、波形一致性和短间隔计数 | 定位值得合并复核的3对，记录不采用其他试合并的原因 |
+| 7 | [group_review.html](07_quality/group_review.html) | 全部组的可切换波形、ISI和复核表单 | 逐组记录论文要求的波形证据，集中在一个文件中 |
+
+`visual_review.csv`由复核页下载后放入07_quality目录；尚未填写时不生成虚假的人工结论。`group_metrics.csv`新增论文时间条件、证据字段和是否进入第8步的标记。

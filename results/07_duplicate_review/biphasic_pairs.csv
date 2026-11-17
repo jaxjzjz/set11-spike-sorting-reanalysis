@@ -2404,7 +2404,7 @@ positive_peak_id,negative_peak_id,channel,dt_samples,positive_event_id,negative_
 19328,19337,4,13,10690,10696,1.003490334673609,1.8213397424420017,False,uncertain,uncertain,review_absorbed_member,,,False
 20058,20063,4,5,11091,11097,1.2910662787088645,1.5052150422435358,False,uncertain,uncertain,review_absorbed_member,,,False
 20248,20210,4,19,11167,11160,1.3852055797252032,3.0609541164586527,False,uncertain,uncertain,review_absorbed_member,,,False
-20345,20318,4,11,11206,11196,1.3443410346892994,3.660040860334188,True,uncertain,uncertain,review_quality_label,,,False
+20345,20318,4,11,11206,11196,1.3443410346892994,3.660040860334188,True,insufficient_events,uncertain,review_quality_label,,,False
 20743,20745,4,5,11434,11436,1.013981686997693,1.398356107270756,True,uncertain,uncertain,review_quality_label,,,False
 23269,23270,4,4,12896,12897,1.0511803173872114,1.1710404681927844,True,uncertain,uncertain,review_quality_label,,,False
 23421,23420,4,19,12973,12972,1.0507230688441556,1.1994793459953776,False,uncertain,uncertain,review_absorbed_member,,,False
@@ -15540,7 +15540,7 @@ positive_peak_id,negative_peak_id,channel,dt_samples,positive_event_id,negative_
 395698,395689,15,14,236751,236751,1.3120026170760135,3.857767527580751,False,uncertain,uncertain,already_merged,,,False
 396408,396400,15,9,237158,237155,1.2427745716292116,4.379237057269311,True,uncertain,uncertain,review_quality_label,,,False
 396667,396637,15,12,237263,237263,3.10929482848539,8.059837517165008,False,uncertain,uncertain,already_merged,,,False
-396756,396725,15,13,237298,237289,2.503190606227194,5.8284868023603025,True,uncertain,uncertain,review_quality_label,,,False
+396756,396725,15,13,237298,237289,2.503190606227194,5.8284868023603025,True,insufficient_events,uncertain,review_quality_label,,,False
 396799,396791,15,9,237313,237308,1.1281900553285789,4.095284205649799,True,uncertain,uncertain,review_quality_label,,,False
 396850,396838,15,9,237329,237329,1.7182288305839275,7.724819290118782,False,uncertain,uncertain,already_merged,,,False
 398439,398428,15,9,238265,238262,1.3077582793193925,4.04532790549935,True,uncertain,uncertain,review_quality_label,,,False
@@ -57483,7 +57483,7 @@ positive_peak_id,negative_peak_id,channel,dt_samples,positive_event_id,negative_
 20181,20160,57,8,11149,11142,1.090994193960145,4.183151665287688,True,uncertain,uncertain,review_quality_label,,,False
 20192,20203,57,16,11157,11160,1.0435675757162015,4.558595519032186,False,uncertain,uncertain,review_absorbed_member,,,False
 20232,20203,57,17,11168,11160,1.4935349387851764,4.558595519032186,False,uncertain,uncertain,review_absorbed_member,,,False
-20340,20323,57,5,11204,11198,1.7384917745652866,8.122061715069275,True,uncertain,uncertain,review_quality_label,,,False
+20340,20323,57,5,11204,11198,1.7384917745652866,8.122061715069275,True,insufficient_events,uncertain,review_quality_label,,,False
 20382,20358,57,8,11219,11211,1.3932673027334288,4.783566984429219,True,uncertain,uncertain,review_quality_label,,,False
 20567,20550,57,6,11321,11315,1.085794153034644,4.660234704629697,True,uncertain,uncertain,review_quality_label,,,False
 21123,21121,57,6,11691,11691,1.0985238292489818,1.5481832534568292,False,uncertain,uncertain,already_merged,,,False
