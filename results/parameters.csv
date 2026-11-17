@@ -10,3 +10,21 @@ random_seed,11,,Reproducibility setting,Sample windows independently of their ou
 padding,0.1,s,Filter boundary setting,"Read padding, filter, then crop"
 welch_segment,1,s,Spectrum estimation setting,Hann window; frequency spacing about 1 Hz
 welch_overlap,0.5,fraction,Setting supported by the documentation,SciPy Welch documentation: 50% overlap for a Hann window
+detection_multiplier,4.5,noise scale,Project setting with published precedent,Report step 3
+minimum_peak_interval,1.0,ms,Published precedent; implementation tradeoff,Applied separately to each channel and polarity
+minimum_peak_interval_samples,30.0,samples,30 kHz conversion,1 ms
+processing_chunk,10.0,s,Memory setting,Padding is cropped after detection
+merge_radius,30,map coordinate units; physical unit unconfirmed,Project setting with data comparison,chanMap.mat does not declare a unit
+merge_half_window,0.5,ms,Published precedent,Muthmann 2015 section 2.4
+merge_half_window_samples,15,samples,30 kHz conversion,Absolute difference from representative
+representative_order,absolute amplitude descending,,Project implementation,Stable order resolves exact ties
+same_channel_rule,no direct match; review opposite polarity after sorting,,Project implementation,Members can share a non-representative channel
+waveform_contacts,6,contacts,Project setting,Main plus nearest five retained contacts
+waveform_before,30,samples,Software precedent,1 ms
+waveform_after,60,samples,Software precedent,2 ms
+pcs_per_contact,3,components,Published precedent,Rossant 2016
+maximum_components,30,groups,Computational limit,Not a neuron count constraint
+events_per_component_budget,50,events,Computational setting,Report step 6
+biphasic_window,0.65,ms,Published precedent,Dehnen 2021 section 2.4.1
+biphasic_window_samples,19,samples,Floor to preserve <=0.65 ms,20 samples would exceed 0.65 ms at 30 kHz
+biphasic_execution,review only,,User decision,Discuss quality standards before enabling removal

@@ -1,13 +1,13 @@
 # Set11 新分析：已生成结果清单
 
-[Notebook](../set11_analysis.ipynb) · [中文报告](../README.md)
+英文代码见上一级 set11_analysis.ipynb，中文说明见上一级 README.md。
 
 | 对应步骤 | 文件名 | 内容 | 保存目的 |
 |---|---|---|---|
 | 参数 | [parameters.csv](parameters.csv) | 本次使用的参数、单位及依据类别 | 区分文件给定值、官方示例与本项目设置 |
 | 1 输入检查 | [01_input_check/recording_summary.csv](01_input_check/recording_summary.csv) | 使用通道数、采样率、有效时长、末尾处理理由和时间连续性 | 确定后续使用的有效时间范围 |
 | 1 输入检查 | [01_input_check/channels.csv](01_input_check/channels.csv) | 64 通道的位置、连接状态、整段统计和保留决定 | 确定可用通道并提供复核线索 |
-| 1 输入检查 | [01_input_check/channel_overview.png](01_input_check/channel_overview.png) | 原始电压波动和探针接点分布 | 快速查看信号差异与位置关系 |
+| 1 输入检查 | [01_input_check/channel_overview.png](01_input_check/channel_overview.png) | 各通道原始电压波动 | 快速查看通道间幅度差异 |
 | 2 预处理 | [02_preprocessing/windows.csv](02_preprocessing/windows.csv) | 六个分层随机窗口的采样点、秒数、种子 | 准确复现本次抽样范围 |
 | 2 预处理 | [02_preprocessing/preprocessing_metrics.csv](02_preprocessing/preprocessing_metrics.csv) | 全部通道各窗口各阶段的 MAD 与频带功率 | 量化预处理影响和时间差异 |
 | 2 预处理 | [02_preprocessing/window_scale_comparison.csv](02_preprocessing/window_scale_comparison.csv) | 六窗波动相对各通道通常水平的比值汇总 | 检查抽样时间段中的波动稳定性 |
@@ -15,5 +15,36 @@
 | 2 预处理 | [02_preprocessing/preprocessing_overview.png](02_preprocessing/preprocessing_overview.png) | 全通道频谱概览及共同参考前后波动 | 检查预处理在所有通道上的整体影响 |
 | 3 正负峰检测 | [03_peak_detection/candidate_peaks.csv](03_peak_detection/candidate_peaks.csv) | 候选峰时间、通道、幅度和方向 | 为相邻接点的事件合并提供输入 |
 | 4 跨接点合并 | [04_event_merge/merged_events.csv](04_event_merge/merged_events.csv) | 候选事件时间、代表接点、幅度、方向和组内峰数 | 为多接点波形提取提供事件时间和主接点 |
+| 5 波形提取 | `05_waveforms/waveforms.npy`（本地生成，未上传） | 342,533 个事件的六接点波形 | 用于提取分组特征 |
+| 5 波形提取 | [waveform_events.csv](05_waveforms/waveform_events.csv) | 对应事件时间和接点编号 | 对照波形文件中的每一行 |
+| 6 初步分组 | [cluster_assignments.csv](06_sorting/cluster_assignments.csv) | 事件编号、主接点和组号 | 用于候选组质量检查 |
+| 6 初步分组 | [model_search.csv](06_sorting/model_search.csv) | 各组数的 BIC、收敛状态和搜索上限 | 核对组数选择 |
 
-第 1 步和第 2 步的抽样检查已有结果。第 3 步全程检测和第 4 步跨接点合并已完成。
+第1–6步已有结果；第7步目前只有双相配对检查，未完成质量分类，自动删除关闭。旧的 `waveform_examples.*` 和 `run_info.json` 是历史文件，当前notebook不再生成或使用。
+
+## 本次补充的结果
+
+| 对应步骤 | 文件名 | 内容 | 保存目的 |
+|---|---|---|---|
+| 3 | [thresholds.csv](03_peak_detection/thresholds.csv) | 各通道噪声尺度、实际阈值、抑制间隔 | 复现找峰条件 |
+| 4 | [peak_members.csv](04_event_merge/peak_members.csv) | 每个峰属于哪个事件及其原始属性 | 追查合并与双相配对 |
+| 4 | [distance_validation.csv](04_event_merge/distance_validation.csv) | 正式候选峰按距离及极性分开的相关性分位数 | 记录半径30的数据依据 |
+| 4 | [correlation_distribution.csv](04_event_merge/correlation_distribution.csv) | 相关性分布的分箱计数 | 查看分布而非只看中位数 |
+| 4 | [boundary_check.csv](04_event_merge/boundary_check.csv) | 连续与分块处理的信号和峰比较 | 检查指定边界是否漏检或重复 |
+| 4 | [voltage_threshold_comparison.csv](04_event_merge/voltage_threshold_comparison.csv) | 新旧逐通道实际阈值 | 保留只更换阈值的对照输入 |
+| 4 | [voltage_threshold_counts.csv](04_event_merge/voltage_threshold_counts.csv) | 相同处理使用新旧阈值的峰数 | 复现阈值对计数的影响 |
+| 7 | [biphasic_pairs.csv](07_duplicate_review/biphasic_pairs.csv) | 正负峰编号、所属事件及判断状态 | 记录疑似重复及处理理由 |
+| 7 | [unit_labels.csv](07_duplicate_review/unit_labels.csv) | 分组质量标签，目前全部未分类 | 供已确定的分类结果接入，不代替质量检查 |
+| 7 | [retained_events.csv](07_duplicate_review/retained_events.csv) | 保留事件、组号及原波形行号 | 后续分析入口；目前未删除任何事件 |
+
+事件编号与原步骤4一致。`retained_events.csv`的`waveform_row`对应原`05_waveforms/waveforms.npy`的行，不能用删减后的新行号直接索引原波形。
+
+## 1 ms间隔对照
+
+| 步骤 | 文件名 | 内容 | 保存目的 |
+|---|---|---|---|
+| 3对照 | [interval_comparison.csv](03_peak_detection/interval_comparison.csv) | 六窗、全部通道、正负方向的有无间隔峰数 | 复核计数差异 |
+| 3对照 | [suppressed_peaks.csv](03_peak_detection/suppressed_peaks.csv) | 舍弃峰、对应保留峰、时间、幅度、中间电压和形状类别 | 逐条追查为什么被舍弃 |
+| 3对照 | [suppressed_waveforms.npz](03_peak_detection/suppressed_waveforms.npz) | 每个舍弃峰前后1.5 ms的六接点预处理波形 | 直接检查峰形状；行号对应pair_id |
+| 3对照 | [interval_waveform_comparison.png](03_peak_detection/interval_waveform_comparison.png) | 三种越阈情况各一个例子 | 解释1 ms实际舍弃了哪些形状 |
+| 3对照 | [interval_plot_examples.csv](03_peak_detection/interval_plot_examples.csv) | 图中三个例子的原始记录 | 复现选图 |
