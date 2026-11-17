@@ -25,9 +25,11 @@ waveform_after,60,samples,Software precedent,2 ms
 pcs_per_contact,3,components,Published precedent,Rossant 2016
 maximum_components,30,groups,Computational limit,Not a neuron count constraint
 events_per_component_budget,50,events,Computational setting,Report step 6
-biphasic_window,0.65,ms,Published precedent,Dehnen 2021 section 2.4.1
-biphasic_window_samples,19,samples,Floor to preserve <=0.65 ms,20 samples would exceed 0.65 ms at 30 kHz
-biphasic_execution,resolved reviewed-label pairs only,,User decision,Preserve original events; export reviewed candidate groups separately
 quality_time_criterion,ISI <3 ms count / event count <0.05,,Published precedent,Dehnen 2021 section 2.1; shape review also required
 quality_review,Codex visual assessment,,Project implementation,All 1719 groups; density atlas and six-contact means; decisions saved in visual_review.csv
-step8_duplicate_policy,exclude groups touching unresolved pairs between accepted activity groups,,Project implementation,Full-group exclusion; low-quality groups excluded separately
+biphasic_window,0.65,ms,Published precedent,Dehnen 2021 section 2.4.1
+biphasic_window_samples,19,samples,Floor of 0.65 ms at 30 kHz,20 samples exceed the window
+biphasic_execution,direct evidence; retained winner only,,Project implementation,Class then threshold ratio; never delete through a removed event
+biphasic_member_evidence,representative pair or complete one-to-one loser-member coverage,,Project implementation,Partial member overlap does not establish a duplicate complete event
+step8_duplicate_policy,retain events and groups; flag unresolved activity pairs,,Project implementation,"Flagged groups are activity candidates, not approved for independent single-unit analysis"
+post_dedup_metrics,all retained events; original PCA basis and scaling,,Project implementation,"Recompute waveform consistency, silhouette and ISI; no automatic SU promotion"
