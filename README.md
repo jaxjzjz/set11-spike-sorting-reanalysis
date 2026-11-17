@@ -206,7 +206,7 @@ Kilosort4 是一套完整的自动分选算法。它的论文可用于对照整�
 
 每条波形取峰前 1 ms、峰后 2 ms，加上峰所在的采样点，共 91 点。这个时间窗参考 SpikeInterface 的默认设置。 [SpikeInterface 波形提取文档](https://spikeinterface.readthedocs.io/en/0.100.5/api.html#spikeinterface.core.extract_waveforms)
 
-**结果**：342,534 个候选事件中，342,533 个有完整窗口。有 1 个事件太靠近记录边缘，无法截出完整波形。波形文件的形状是 **342,533 × 6 × 91**，电压单位为 µV。事件表每一行对应波形文件中的同一行，记录峰时间和六个接点的通道号。 [波形数据](results/05_waveforms/waveforms.npy) · [事件与接点表](results/05_waveforms/waveform_events.csv)
+**结果**：342,534 个候选事件中，342,533 个有完整窗口。有 1 个事件太靠近记录边缘，无法截出完整波形。波形文件的形状是 **342,533 × 6 × 91**，电压单位为 µV。事件表每一行对应波形文件中的同一行，记录峰时间和六个接点的通道号。 `waveforms.npy`（本地生成，未上传） · [事件与接点表](results/05_waveforms/waveform_events.csv)
 
 ## 第 6 步：PCA 和初步分组
 
@@ -259,7 +259,7 @@ CH18的正峰可能已被相邻通道的代表峰吸收，负峰则归入另一�
 ## 参考资料
 
 **R1．课程提供的 Open Ephys 读取代码。**
-[OpenEphys.py](../01_original_submissions/analysis-tools/NeuroData/Python3/OpenEphys.py) 中的 `loadContinuous()` 定义文件头、记录块、时间戳、ADC 字节顺序和电压换算的读法。这里使用的是本地课程材料。
+[OpenEphys.py](01_original_submissions/analysis-tools/NeuroData/Python3/OpenEphys.py) 中的 `loadContinuous()` 定义文件头、记录块、时间戳、ADC 字节顺序和电压换算的读法。这里使用的是本地课程材料。
 
 **R2．SpikeInterface 0.105.0 官方预处理文档。**
 [Preprocessing module](https://spikeinterface.readthedocs.io/en/0.105.0/modules/preprocessing.html)，参见 Overview 中的 `bandpass_filter(..., freq_min=300, freq_max=6000)` 后接 `common_reference(..., operator="median")`，以及 filter 和 common_reference 小节。
