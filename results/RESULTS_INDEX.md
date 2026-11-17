@@ -1,6 +1,6 @@
 # Set11 新分析：已生成结果清单
 
-英文代码见上一级 set11_analysis.ipynb，中文说明见上一级 README.md。
+英文代码见上一级 set11_analysis.ipynb，中文说明见上一级 set11_report_cn.md。
 
 | 对应步骤 | 文件名 | 内容 | 保存目的 |
 |---|---|---|---|
@@ -15,12 +15,12 @@
 | 2 预处理 | [02_preprocessing/preprocessing_overview.png](02_preprocessing/preprocessing_overview.png) | 全通道频谱概览及共同参考前后波动 | 检查预处理在所有通道上的整体影响 |
 | 3 正负峰检测 | [03_peak_detection/candidate_peaks.csv](03_peak_detection/candidate_peaks.csv) | 候选峰时间、通道、幅度和方向 | 为相邻接点的事件合并提供输入 |
 | 4 跨接点合并 | [04_event_merge/merged_events.csv](04_event_merge/merged_events.csv) | 候选事件时间、代表接点、幅度、方向和组内峰数 | 为多接点波形提取提供事件时间和主接点 |
-| 5 波形提取 | `05_waveforms/waveforms.npy`（本地生成，未上传） | 342,533 个事件的六接点波形 | 用于提取分组特征 |
+| 5 波形提取 | [waveforms.npy](05_waveforms/waveforms.npy) | 342,533 个事件的六接点波形 | 用于提取分组特征 |
 | 5 波形提取 | [waveform_events.csv](05_waveforms/waveform_events.csv) | 对应事件时间和接点编号 | 对照波形文件中的每一行 |
 | 6 初步分组 | [cluster_assignments.csv](06_sorting/cluster_assignments.csv) | 事件编号、主接点和组号 | 用于候选组质量检查 |
 | 6 初步分组 | [model_search.csv](06_sorting/model_search.csv) | 各组数的 BIC、收敛状态和搜索上限 | 核对组数选择 |
 
-第1–6步已有结果；第7步目前只有双相配对检查，未完成质量分类，自动删除关闭。旧的 `waveform_examples.*` 和 `run_info.json` 是历史文件，当前notebook不再生成或使用。
+第1–6步已有结果；第7步已完成全部组的质量指标计算和双相配对检查，尚未赋予质量类别，自动删除关闭。旧的 `waveform_examples.*` 和 `run_info.json` 是历史文件，当前notebook不再生成或使用。
 
 ## 本次补充的结果
 
@@ -48,3 +48,12 @@
 | 3对照 | [suppressed_waveforms.npz](03_peak_detection/suppressed_waveforms.npz) | 每个舍弃峰前后1.5 ms的六接点预处理波形 | 直接检查峰形状；行号对应pair_id |
 | 3对照 | [interval_waveform_comparison.png](03_peak_detection/interval_waveform_comparison.png) | 三种越阈情况各一个例子 | 解释1 ms实际舍弃了哪些形状 |
 | 3对照 | [interval_plot_examples.csv](03_peak_detection/interval_plot_examples.csv) | 图中三个例子的原始记录 | 复现选图 |
+
+## 第7步质量检查
+
+| 步骤 | 文件名 | 内容 | 保存目的 |
+|---|---|---|---|
+| 7 | [group_metrics.csv](07_quality/group_metrics.csv) | 全部1,719组的事件数、留一模板相关性、轮廓系数、短间隔和具体问题标记 | 逐组定位分离与波形问题；保留全部计算结果 |
+| 7 | [neighbor_pairs.csv](07_quality/neighbor_pairs.csv) | 同主接点最近特征中心配对和模板相关性 | 找到可以直接对照的组号 |
+| 7 | [group_overview.png](07_quality/group_overview.png) | 全部候选组的一致性和分离总览 | 查看总体分组质量 |
+| 7 | [overlap_example.png](07_quality/overlap_example.png) | CH10-C9与C23的六接点波形、特征、ISI和互相关图 | 展示已定位的分离问题 |
