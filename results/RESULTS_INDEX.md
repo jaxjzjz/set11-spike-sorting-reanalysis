@@ -20,7 +20,7 @@
 | 6 初步分组 | [cluster_assignments.csv](06_sorting/cluster_assignments.csv) | 事件编号、主接点和组号 | 用于候选组质量检查 |
 | 6 初步分组 | [model_search.csv](06_sorting/model_search.csv) | 各组数的 BIC、收敛状态和搜索上限 | 核对组数选择 |
 
-第1–6步已有结果；第7步已完成全部组的质量指标计算和双相配对检查，尚未赋予质量类别，自动删除关闭。旧的 `waveform_examples.*` 和 `run_info.json` 是历史文件，当前notebook不再生成或使用。
+第1–6步已有结果；第7步已完成1,719组视觉初评和明确配对去重，导出116个候选组、19,239个事件。旧的 `waveform_examples.*` 和 `run_info.json` 是历史文件，当前notebook不再生成或使用。
 
 ## 本次补充的结果
 
@@ -34,8 +34,8 @@
 | 4 | [voltage_threshold_comparison.csv](04_event_merge/voltage_threshold_comparison.csv) | 新旧逐通道实际阈值 | 保留只更换阈值的对照输入 |
 | 4 | [voltage_threshold_counts.csv](04_event_merge/voltage_threshold_counts.csv) | 相同处理使用新旧阈值的峰数 | 复现阈值对计数的影响 |
 | 7 | [biphasic_pairs.csv](07_duplicate_review/biphasic_pairs.csv) | 正负峰编号、所属事件及判断状态 | 记录疑似重复及处理理由 |
-| 7 | [unit_labels.csv](07_duplicate_review/unit_labels.csv) | 分组质量标签，目前全部未分类 | 供已确定的分类结果接入，不代替质量检查 |
-| 7 | [retained_events.csv](07_duplicate_review/retained_events.csv) | 保留事件、组号及原波形行号 | 后续分析入口；目前未删除任何事件 |
+| 7 | [unit_labels.csv](07_duplicate_review/unit_labels.csv) | 全部1,719组的当前候选类别和分组签名 | 供已确定的分类结果接入，不代替质量检查 |
+| 7 | [retained_events.csv](07_duplicate_review/retained_events.csv) | 保留事件、组号及原波形行号 | 保留324,579个事件；第8步使用另行筛选的spike_times.csv |
 
 事件编号与原步骤4一致。`retained_events.csv`的`waveform_row`对应原`05_waveforms/waveforms.npy`的行，不能用删减后的新行号直接索引原波形。
 
@@ -61,11 +61,14 @@
 | 7 | [merge_trials.csv](07_quality/merge_trials.csv) | 827对候选组独立试合并前后的分离、波形一致性和短间隔计数 | 定位值得合并复核的3对，记录不采用其他试合并的原因 |
 | 7 | [group_review.html](07_quality/group_review.html) | 全部组的可切换波形、ISI和复核表单 | 逐组记录论文要求的波形证据，集中在一个文件中 |
 
-`visual_review.csv`由复核页下载后放入07_quality目录；尚未填写时不生成虚假的人工结论。`group_metrics.csv`新增论文时间条件、证据字段和是否进入第8步的标记。
+`visual_review.csv`已保存全部1,719组的Codex视觉初评及图册位置。`group_metrics.csv`新增论文时间条件、证据字段和是否进入第8步的标记。
 
 ## 第7步交付文件
 
 | 步骤 | 文件名 | 内容 | 保存目的 |
 |---|---|---|---|
 | 7 | [unit_summary.csv](07_quality/unit_summary.csv) | 全部组的类别、理由、保留标记及去重前后事件数 | 明确第8步使用哪些单元 |
-| 7 | [spike_times.csv](07_quality/spike_times.csv) | 保留单元去重后的事件编号与放电时间 | 作为声音响应分析的输入；当前尚无已审核可用单元 |
+| 7 | [spike_times.csv](07_quality/spike_times.csv) | 保留单元去重后的事件编号与放电时间 | 作为声音响应分析输入：11个单神经元候选、105个混合活动候选，共19,239个事件 |
+
+| 7 | [visual_review.csv](07_quality/visual_review.csv) | 逐组波形初评、理由、来源及图册位置 | 复现类别和排除决定 |
+| 7 | [waveform_review_atlas.pdf](07_quality/waveform_review_atlas.pdf) | 全部1,719组，58页密度图及六接点均值 | 保存本次视觉判读证据 |
