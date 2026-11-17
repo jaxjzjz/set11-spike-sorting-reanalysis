@@ -62,3 +62,10 @@
 | 7 | [group_review.html](07_quality/group_review.html) | 全部组的可切换波形、ISI和复核表单 | 逐组记录论文要求的波形证据，集中在一个文件中 |
 
 `visual_review.csv`由复核页下载后放入07_quality目录；尚未填写时不生成虚假的人工结论。`group_metrics.csv`新增论文时间条件、证据字段和是否进入第8步的标记。
+
+## 第7步交付文件
+
+| 步骤 | 文件名 | 内容 | 保存目的 |
+|---|---|---|---|
+| 7 | [unit_summary.csv](07_quality/unit_summary.csv) | 全部组的类别、理由、保留标记及去重前后事件数 | 明确第8步使用哪些单元 |
+| 7 | [spike_times.csv](07_quality/spike_times.csv) | 保留单元去重后的事件编号与放电时间 | 作为声音响应分析的输入；当前尚无已审核可用单元 |
