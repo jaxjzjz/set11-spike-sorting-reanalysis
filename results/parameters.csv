@@ -33,3 +33,9 @@ biphasic_execution,direct evidence; retained winner only,,Project implementation
 biphasic_member_evidence,representative pair or complete one-to-one loser-member coverage,,Project implementation,Partial member overlap does not establish a duplicate complete event
 step8_duplicate_policy,retain events and groups; flag unresolved activity pairs,,Project implementation,"Flagged groups are activity candidates, not approved for independent single-unit analysis"
 post_dedup_metrics,all retained events; original PCA basis and scaling,,Project implementation,"Recompute waveform consistency, silhouette and ISI; no automatic SU promotion"
+ccg_bin_width,0.5,ms,Published precedent,Dehnen 2021 section 2.5; 15 samples; central integer lags -7..7
+ccg_half_window,20.25,ms,Published precedent,81 bins; 607.5 samples
+ccg_central_z,5,,Published precedent,"Transferred screening threshold, not calibrated on Set11"
+ccg_min_coincidences,3,events,Project safeguard,At least three central coincidences and nonzero background SD
+ccg_scope,remaining linked activity groups,,Project implementation,No group merging; only direct event removal; equal priorities retained
+ccg_priority,SU before MU; then group median amplitude/threshold,,Project implementation,Dehnen Part III lower-SNR cluster rule; project median aggregation

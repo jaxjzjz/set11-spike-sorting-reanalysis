@@ -68,7 +68,10 @@
 | 步骤 | 文件名 | 内容 | 保存目的 |
 |---|---|---|---|
 | 7 | [unit_summary.csv](07_quality/unit_summary.csv) | 全部组的类别、理由、分析状态、残留配对事件数及去重后质量指标 | 明确第8步使用哪些单元 |
-| 7 | [spike_times.csv](07_quality/spike_times.csv) | 保留单元去重后的事件编号与放电时间 | 带状态的758组、95,225个事件；主分析筛选reviewed_activity后为242组、31,947个事件 |
+| 7 | [spike_times.csv](07_quality/spike_times.csv) | 保留单元去重后的事件编号与放电时间 | 带状态的756组、88,762个事件；主分析筛选reviewed_activity后为301组、37,601个事件 |
 
 | 7 | [visual_review.csv](07_quality/visual_review.csv) | 逐组波形初评、理由、来源及图册位置 | 复现类别和排除决定 |
 | 7 | [waveform_review_atlas.pdf](07_quality/waveform_review_atlas.pdf) | 全部1,719组，58页密度图及六接点均值 | 保存本次视觉判读证据 |
+
+| 7 | [group_pair_ccg.csv](07_duplicate_review/group_pair_ccg.csv) | 968对关联组的互相关统计、强度及判定 | 复现论文规则筛选 |
+| 7 | [group_pair_event_decisions.csv](07_duplicate_review/group_pair_event_decisions.csv) | 每对中央格事件及实际保留／删除关系 | 追查新增6,463次删除 |
